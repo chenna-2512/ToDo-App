@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
+import { ToastContainer,toast } from 'react-toastify';
 
 const Todo = () => {
   const [todo, setTodo] = useState("");
@@ -8,10 +9,10 @@ const Todo = () => {
   const addToDo = () => {
     let val = todo.trim();
     if (val === "") {
-      alert('Task is empty');
+      toast.error('Task is empty');
     } 
     else if (todolist.includes(val)) {
-      alert('Task already exists');
+      toast.error('Task already exists');
     } 
     else {
       setTodoList([...todolist, val]); 
@@ -28,6 +29,8 @@ const Todo = () => {
   };
 
   return (
+    <>
+    <ToastContainer/>
     <div className="bg-secondary min-vh-100 d-flex flex-column align-items-center py-4">
       <h1 className="text-white mb-4">To-Do List</h1>
 
@@ -52,6 +55,7 @@ const Todo = () => {
         ))}
       </ul>
     </div>
+        </>
   );
 };
 
